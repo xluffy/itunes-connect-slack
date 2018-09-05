@@ -5,14 +5,14 @@ require 'dotenv/load'
 # Constants
 itc_username = ENV["ITC_USERNAME"]
 itc_password = ENV["ITC_PASSWORD"]
-bundle_id = ENV["bundle_id"]
+bundle_id = ENV["BUNDLE_ID"]
 
 if (!itc_username || !bundle_id)
   puts "did not find username and bundle id"
   exit
 end
 
-Spaceship::Tunes.login(itc_username)
+Spaceship::Tunes.login(itc_username, itc_password)
 app = Spaceship::Tunes::Application.find(bundle_id)
 editVersionInfo = app.edit_version
 liveVersionInfo = app.live_version
