@@ -7,13 +7,24 @@ itc_username = ENV["ITC_USERNAME"]
 itc_password = ENV["ITC_PASSWORD"]
 bundle_id = ENV["BUNDLE_ID"]
 
-if (!itc_username || !bundle_id)
-  puts "did not find username and bundle id"
+if (!itc_username)
+  puts "ERROR: Can't get Itunes email address, please update .env file"
   exit
 end
 
+if (!itc_password)
+  puts "ERROR: Can't get Itunes password, please update .env file"
+end
+
+if (!bundle_id)
+  puts "ERROR: Can't get bundle id, please update .env file"
+  exit
+end
+
+# auth itunes connnect
 Spaceship::Tunes.login(itc_username, itc_password)
 app = Spaceship::Tunes::Application.find(bundle_id)
+
 editVersionInfo = app.edit_version
 liveVersionInfo = app.live_version
 
