@@ -1,4 +1,4 @@
-var poster = require('./post-update.js');
+var slacker = require('./slacker.js');
 var dirty = require('dirty');
 var db = dirty('kvstore.db');
 var pollIntervalSeconds = 120
@@ -20,7 +20,7 @@ function checkAppStatus() {
       var lastAppInfo = db.get('appInfo');
 
       if (!lastAppInfo || lastAppInfo.status != currentAppInfo.status || debug) {
-        poster.slack(currentAppInfo, db.get('submissionStart'));
+        slacker.slack(currentAppInfo, db.get('submissionStart'));
 
         // store submission start time
         if (currentAppInfo.status == "Waiting For Review") {
