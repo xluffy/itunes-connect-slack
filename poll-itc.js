@@ -9,7 +9,7 @@ function checkAppStatus() {
 
   // invoke ruby script to grab latest app status
   var exec = require('child_process').exec;
-  exec('ruby get-app-status.rb', function (err, stdout, stderr) {
+  exec('ruby get-app-status.rb', function (err, stdout) {
     if (stdout) {
       // compare new app info with last one (from database)
       console.log(stdout);
@@ -28,7 +28,7 @@ function checkAppStatus() {
         }
       }
       else if (currentAppInfo) {
-        console.log(`Current status "${currentAppInfo.status}" matches previous status`);
+        console.log(`Current status "${currentAppInfo.status}" matches previous status, don't send to slack`);
       }
       else {
         console.log('Could not fetch app status');
