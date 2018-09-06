@@ -1,22 +1,24 @@
+# frozen_string_literal: true
+
 require 'Spaceship'
 require 'json'
 require 'dotenv/load'
 
 # Constants
-itc_username = ENV["ITC_USERNAME"]
-itc_password = ENV["ITC_PASSWORD"]
-bundle_id = ENV["BUNDLE_ID"]
+itc_username = ENV['ITC_USERNAME']
+itc_password = ENV['ITC_PASSWORD']
+bundle_id = ENV['BUNDLE_ID']
 
-if (!itc_username)
+unless itc_username
   puts "ERROR: Can't get Itunes email address, please update .env file"
   exit
 end
 
-if (!itc_password)
+unless itc_password
   puts "ERROR: Can't get Itunes password, please update .env file"
 end
 
-if (!bundle_id)
+unless bundle_id
   puts "ERROR: Can't get bundle id, please update .env file"
   exit
 end
@@ -25,29 +27,29 @@ end
 Spaceship::Tunes.login(itc_username, itc_password)
 app = Spaceship::Tunes::Application.find(bundle_id)
 
-editVersionInfo = app.edit_version
-liveVersionInfo = app.live_version
+edit_version_info = app.edit_version
+live_version_info = app.live_version
 
 # send app info to stdout as JSON
-versions = Hash.new
+versions = {}
 
-if editVersionInfo
-  versions["editVersion"] = {
-    "name" => app.name,
-    "version" => editVersionInfo.version,
-    "status" => editVersionInfo.app_status,
-    "appId" => app.apple_id,
-    "iconUrl" => app.app_icon_preview_url
+if edit_version_info
+  versions['editVersion'] = {
+    'name' => app.name,
+    'version' => edit_version_info.version,
+    'status' => edit_version_info.app_status,
+    'appId' => app.apple_id,
+    'iconUrl' => app.app_icon_preview_url
   }
 end
 
-if liveVersionInfo
-  versions["liveVersion"] = {
-    "name" => app.name,
-    "version" => liveVersionInfo.version,
-    "status" => liveVersionInfo.app_status,
-    "appId" => app.apple_id,
-    "iconUrl" => app.app_icon_preview_url
+if live_version_info
+  versions['liveVersion'] = {
+    'name' => app.name,
+    'version' => live_version_info.version,
+    'status' => live_version_info.app_status,
+    'appId' => app.apple_id,
+    'iconUrl' => app.app_icon_preview_url
   }
 end
 
