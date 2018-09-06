@@ -1,8 +1,15 @@
 {
-  "engines": { "node": "10.9" },
+  "engines": {
+    "node": "10.9"
+  },
   "engineStrict": {
-    "os": [ "darwin", "linux" ],
-    "cpu": [ "x64" ]
+    "os": [
+      "darwin",
+      "linux"
+    ],
+    "cpu": [
+      "x64"
+    ]
   },
   "dependencies": {
     "@slack/client": "3.16.0",

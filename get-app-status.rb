@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'Spaceship'
+require 'spaceship'
 require 'json'
 require 'dotenv/load'
 
