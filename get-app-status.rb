@@ -34,7 +34,7 @@ live_version_info = app.live_version
 versions = {}
 
 if edit_version_info
-  versions['editVersion'] = {
+  versions['edit_version_info'] = {
     'name' => app.name,
     'version' => edit_version_info.version,
     'status' => edit_version_info.app_status,
@@ -44,7 +44,7 @@ if edit_version_info
 end
 
 if live_version_info
-  versions['liveVersion'] = {
+  versions['live_version_info'] = {
     'name' => app.name,
     'version' => live_version_info.version,
     'status' => live_version_info.app_status,
