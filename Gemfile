@@ -1,6 +1,11 @@
+# frozen_string_literal: true
+
+# frozen_string_literal: true.
+
 source 'https://rubygems.org'
 
+gem 'dotenv'
 gem 'fastlane', '2.102'
 gem 'json'
 gem 'pry'
-gem 'dotenv'
+gem 'rubocop', require: false
