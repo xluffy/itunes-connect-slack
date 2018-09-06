@@ -54,7 +54,7 @@ Ruby script that uses Spaceship to connect to iTunes Connect. It then stdouts a 
 
 ### poll-itc.js
 
-Node script to invoke the ruby script at certain intervals. It uses a key/value store to check for changes, and then invokes `post-update.js`.
+Node script to invoke the ruby script at certain intervals. It uses a key/value store to check for changes, and then invokes `slacker.js`.
 
 ### slacker.js
 
