@@ -40,10 +40,10 @@ In `poll-itc.js`, set the `pollIntervalSeconds` value to whatever you like.
 > node poll-itc.js
 ```
 
-Or you can use the [forever](https://github.com/foreverjs/forever) tool to keep it up indefinitely:
+Or you can use the [pm2](https://github.com/Unitech/pm2) tool to keep it up indefinitely:
 
-```base
-> forever start poll-itc.js
+```bash
+> pm2 start poll-itc.js --name 'itunes-connect-slack'
 ```
 
 # Files
@@ -56,6 +56,6 @@ Ruby script that uses Spaceship to connect to iTunes Connect. It then stdouts a 
 
 Node script to invoke the ruby script at certain intervals. It uses a key/value store to check for changes, and then invokes `post-update.js`.
 
-### post-update.js
+### slacker.js
 
 Node script that uses Slack's node.js SDK to send a message as a bot. It also calculates the number of hours since submission.
